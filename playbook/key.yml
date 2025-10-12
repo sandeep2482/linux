@@ -1,0 +1,8 @@
+- name: Deploy SSH public key for user sandeep
+  hosts: sandeep
+  tasks:
+    - name: Ensure SSH public key is present for sandeep
+      authorized_key:
+        user: sandeep
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
